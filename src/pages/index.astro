@@ -1,488 +1,949 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="National Level Open Hardware-IoT Geospatial Hackathon">
-    <!-- Fixed Navbar -->
-    <nav style="background-color: rgba(255, 255, 255, 0.7); backdrop-filter: blur(8px); padding: 10px; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <a href="/" style="margin: 0; color: #007bff; cursor: pointer; text-decoration: none;">
-    <h1 class="nav-title" style="margin: 0;">&nbsp IoT Geospatial Hackathon</h1>
-</a>
-
-            <!-- Hamburger Menu Icon -->
-            <div id="hamburgerMenu" style="display: none; cursor: pointer; padding-right:20px;">
-                <div style="width: 30px; height: 3px; background-color: #007bff; margin: 5px;"></div>
-                <div style="width: 30px; height: 3px; background-color: #007bff; margin: 5px;"></div>
-                <div style="width: 30px; height: 3px; background-color: #007bff; margin: 5px;"></div>
-            </div>
-            <!-- Navigation Links -->
-            <ul id="navLinks" style="display: flex; list-style-type: none; padding: 0; margin: 0; gap: 20px; padding-right:25px;">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#resources" class="nav-link">Resources</a></li>
-                <li><a href="#schedule" class="nav-link">Schedule</a></li>
-                <li><a href="#register" class="nav-link">Register</a></li>
-                <li><a href="#partners" class="nav-link">Partners</a></li>
-                <li><a href="#contact" class="nav-link">Contact Us</a></li>
-            </ul>
+  <!-- Add a new section for the new carousel above the navigation tab -->
+  <section
+    id="new-carousel-container"
+    style="height: 100px; background-color: white; padding: 10px; margin-top: 55px; text-align: center;"
+  >
+    <!-- HTML: Carousel container -->
+    <div class="sponsor-carousel-wrapper">
+      <div class="sponsor-carousel-track" id="sponsorCarouselTrack">
+        <!-- Add slides with image links here -->
+        <div class="sponsor-carousel-slide">
+          <a href="http://iitb.ac.in/" target="_blank">
+            <img
+              src="/iitb-logo.png"
+              alt="Partner 1"
+              class="sponsor-carousel-image"
+              style="height:83px;width:225px;"
+            />
+          </a>
         </div>
-        <!-- Mobile Navigation Drawer -->
-        <div id="mobileNavDrawer" style="transform: translateX(-100%); position: fixed; top: 0; left: 0; height: 100vh; width: 250px; background-color: white; padding: 10px; z-index: 999; overflow-y: auto; transition: transform 0.3s ease-in-out;">
-            <ul style="list-style-type: none; padding: 0; margin: 0;">
-                <li><a href="#home" class="nav-link-mobile">Home</a></li>
-                <li><a href="#about" class="nav-link-mobile">About</a></li>
-                <li><a href="#resources" class="nav-link-mobile">Resources</a></li>
-                <li><a href="#schedule" class="nav-link-mobile">Schedule</a></li>
-                <li><a href="#register" class="nav-link-mobile">Register</a></li>
-                <li><a href="#partners" class="nav-link-mobile">Partners</a></li>
-                <li><a href="#contact" class="nav-link-mobile">Contact Us</a></li>
-            </ul>
-            <!-- Social Media Links at the bottom of the mobile navigation drawer -->
-            <div id="socialLinks" style="display: flex; justify-content: center; gap: 10px; padding-top: 20px; position: fixed; bottom: 115px; left: 0; width: 100%; padding-bottom: 20px;">
-                <a href="https://www.facebook.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background-color: #3b5998; color: white; text-decoration: none;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-0.73 0-1.325 0.594-1.325 1.325v21.35c0 0.73 0.594 1.325 1.325 1.325h11.49v-9.29h-3.125v-3.627h3.125v-2.671c0-3.097 1.89-4.788 4.657-4.788 1.325 0 2.462 0.099 2.792 0.143v3.24l-1.917 0.001c-1.502 0-1.793 0.713-1.793 1.763v2.313h3.587l-0.467 3.627h-3.12v9.29h6.117c0.73 0 1.325-0.594 1.325-1.325v-21.35c0-0.73-0.595-1.325-1.325-1.325z"/></svg>
-                </a>
-                <!-- Instagram -->
-                <a href="https://www.instagram.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background-color: #e4405f; color: white; text-decoration: none;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584 0.012 4.849 0.07 1.206 0.057 1.878 0.247 2.318 0.411 0.582 0.228 1.002 0.5 1.44 0.938s0.71 0.858 0.938 1.44c0.165 0.439 0.354 1.112 0.411 2.318 0.058 1.266 0.069 1.645 0.069 4.85s-0.012 3.584-0.069 4.849c-0.057 1.206-0.247 1.878-0.411 2.318-0.228 0.582-0.5 1.002-0.938 1.44s-0.858 0.71-1.44 0.938c-0.44 0.165-1.112 0.354-2.318 0.411-1.265 0.058-1.645 0.069-4.849 0.069s-3.584-0.012-4.849-0.069c-1.206-0.057-1.878-0.247-2.318-0.411-0.582-0.228-1.002-0.5-1.44-0.938s-0.71-0.858-0.938-1.44c-0.165-0.44-0.354-1.112-0.411-2.318-0.058-1.265-0.069-1.645-0.069-4.849s0.012-3.584 0.069-4.849c0.057-1.206 0.247-1.878 0.411-2.318 0.228-0.582 0.5-1.002 0.938-1.44s0.858-0.71 1.44-0.938c0.44-0.165 1.112-0.354 2.318-0.411 1.265-0.058 1.645-0.069 4.849-0.069m0-2.163c-3.243 0-3.62 0.013-4.885 0.07-1.268 0.058-2.151 0.246-2.9 0.522-0.786 0.287-1.456 0.669-2.125 1.338s-1.051 1.339-1.338 2.125c-0.276 0.749-0.464 1.632-0.522 2.9-0.058 1.266-0.07 1.642-0.07 4.885s0.013 3.62 0.07 4.885c0.058 1.268 0.246 2.151 0.522 2.9 0.287 0.786 0.669 1.456 1.338 2.125s1.339 1.051 2.125 1.338c0.749 0.276 1.632 0.464 2.9 0.522 1.265 0.058 1.642 0.07 4.885 0.07s3.62-0.013 4.885-0.07c1.268-0.058 2.151-0.246 2.9-0.522 0.786-0.287 1.456-0.669 2.125-1.338s1.051-1.339 1.338-2.125c0.276-0.749 0.464-1.632 0.522-2.9 0.058-1.265 0.07-1.642 0.07-4.849s-0.013-3.62-0.07-4.885c-0.058-1.268-0.246-2.151-0.522-2.9-0.287-0.786-0.669-1.456-1.338-2.125s-1.339-1.051-2.125-1.338c-0.749-0.276-1.632-0.464-2.9-0.522-1.265-0.058-1.642-0.07-4.885-0.07zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-10.85a1.44 1.44 0 1 0 0-2.879 1.44 1.44 0 0 0 0 2.879z"/></svg>
-                </a>
-                <!-- Twitter (now called X) -->
-                <a href="https://twitter.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background-color: #1da1f2; color: white; text-decoration: none;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M22.46 6.012c-.77.344-1.59.576-2.46.675a4.32 4.32 0 0 0 1.88-2.398 8.615 8.615 0 0 1-2.732 1.048 4.295 4.295 0 0 0-7.322 3.916A12.176 12.176 0 0 1 1.67 4.149a4.292 4.292 0 0 0 1.33 5.733 4.285 4.285 0 0 1-1.947-.537v.054a4.293 4.293 0 0 0 3.447 4.209 4.308 4.308 0 0 1-1.943.075 4.293 4.293 0 0 0 4.005 2.976A8.593 8.593 0 0 1 1 19.539a12.113 12.113 0 0 0 6.558 1.921c7.869 0 12.17-6.515 12.17-12.17 0-.185-.004-.369-.013-.552a8.7 8.7 0 0 0 2.142-2.217l.002-.007z"/></svg>
-                </a>
-                <!-- LinkedIn -->
-                <a href="https://www.linkedin.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%;padding-bottom:6px; padding-left:4px; background-color: #0077b5; color: white; text-decoration: none;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5c0 .99-.8 1.8-1.8 1.8-1 .01-1.8-.8-1.8-1.8 0-.99.8-1.8 1.8-1.8.99 0 1.8.8 1.8 1.8zm.13 3.5h-3.72v17h3.72v-17zm5.27 0h-3.61v17h3.61v-7.95c0-4.2 5.54-4.5 5.54 0v7.95h3.61v-10.6c0-7.3-8.96-7-9.54-3.47v-2.93zm0 0v0z"/></svg>
-                </a>
-            </div>
+        <div class="sponsor-carousel-slide">
+          <a href="https://fossee.in/" target="_blank">
+            <img
+              src="/fossee-logo.png"
+              alt="Partner 2"
+              class="sponsor-carousel-image"
+              style="height:83px;width:225px;"
+            />
+          </a>
         </div>
-    </nav>
-
-    <!-- Main content -->
-    <main  style="margin-top: 70px; margin: 50px auto; max-width: 1200px; padding: 20px;"  >
-    
-        <!-- Image and text section -->
-<section  style="display: flex; gap: 20px; background-color: #f4f4f4; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-    <!-- Left Image -->
-    <div style="flex: 1;">
-        <img src="/indiamap.png" alt="First Image" style="width: 100%; height: auto; object-fit: cover; border-radius: 10px;">
+        <div class="sponsor-carousel-slide">
+          <a href="https://spoken-tutorial.org/" target="_blank">
+            <img
+              src="/st-logo.png"
+              alt="Partner 3"
+              class="sponsor-carousel-image"
+              style="height:83px;width:225px;"
+            />
+          </a>
+        </div><div class="sponsor-carousel-slide">
+          <a href="https://icfoss.in/" target="_blank">
+            <img
+              src="/icfoss-logo.png"
+              alt="Partner 4"
+              class="sponsor-carousel-image"
+              style="height:83px;width:225px;"
+            />
+          </a>
+        </div><div class="sponsor-carousel-slide">
+          <a href="http://www.rudra.iitb.ac.in/" target="_blank">
+            <img
+              src="/rudra-logo.png"
+              alt="Partner 5"
+              class="sponsor-carousel-image"
+              style="height:83px;width:225px;"
+            />
+          </a>
+        </div><div class="sponsor-carousel-slide">
+          <a href="https://www.iittp.ac.in/" target="_blank">
+            <img
+              src="/iit-tirupati.png"
+              alt="Partner 6"
+              class="sponsor-carousel-image"
+              style="height:83px;width:225px;"
+            />
+          </a>
+        </div><div class="sponsor-carousel-slide">
+          <a href="https://iittnif.com/" target="_blank">
+            <img
+              src="/navavishkaar.png"
+              alt="Partner 7"
+              class="sponsor-carousel-image"
+              style="height:83px;width:225px;"
+            />
+          </a>
+        </div><div class="sponsor-carousel-slide">
+          <a href="https://nmicps.in/" target="_blank">
+            <img
+              src="/NM-ICPS-logo1.png"
+              alt="Partner 8"
+              class="sponsor-carousel-image"
+              style="height:83px;width:225px;"
+            />
+          </a>
+        </div>
+      </div>
     </div>
-    <!-- Right text and image -->
-    <div style="flex: 1;">
+  </section>
+
+  <!-- Fixed Navbar -->
+  <nav
+    style="background-color: rgba(255, 255, 255, 0.7); backdrop-filter: blur(8px); padding: 10px; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
+  >
+    <div
+      style="display: flex; justify-content: space-between; align-items: center;"
+    >
+      <a
+        href="/"
+        style="margin: 0; color: #007bff; cursor: pointer; text-decoration: none;"
+      >
+        <h1 class="nav-title" style="margin: 0;">
+          &nbsp IoT Geospatial Hackathon
+        </h1>
+      </a>
+
+      <!-- Hamburger Menu Icon -->
+      <div
+        id="hamburgerMenu"
+        style="display: none; cursor: pointer; padding-right:20px;"
+      >
+        <div
+          style="width: 30px; height: 3px; background-color: #007bff; margin: 5px;"
+        >
+        </div>
+        <div
+          style="width: 30px; height: 3px; background-color: #007bff; margin: 5px;"
+        >
+        </div>
+        <div
+          style="width: 30px; height: 3px; background-color: #007bff; margin: 5px;"
+        >
+        </div>
+      </div>
+      <!-- Navigation Links -->
+      <ul
+        id="navLinks"
+        style="display: flex; list-style-type: none; padding: 0; margin: 0; gap: 20px; padding-right:25px;"
+      >
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#resources" class="nav-link">Resources</a></li>
+        <li><a href="#schedule" class="nav-link">Schedule</a></li>
+        <li><a href="#register" class="nav-link">Register</a></li>
+        <li><a href="#partners" class="nav-link">Partners</a></li>
+        <li><a href="#contact" class="nav-link">Contact Us</a></li>
+      </ul>
+    </div>
+    <!-- Mobile Navigation Drawer -->
+    <div
+      id="mobileNavDrawer"
+      style="transform: translateX(-100%); position: fixed; top: 0; left: 0; height: 100vh; width: 250px; background-color: white; padding: 10px; z-index: 999; overflow-y: auto; transition: transform 0.3s ease-in-out;"
+    >
+      <ul style="list-style-type: none; padding: 0; margin: 0;">
+        <li><a href="#home" class="nav-link-mobile">Home</a></li>
+        <li><a href="#about" class="nav-link-mobile">About</a></li>
+        <li><a href="#resources" class="nav-link-mobile">Resources</a></li>
+        <li><a href="#schedule" class="nav-link-mobile">Schedule</a></li>
+        <li><a href="#register" class="nav-link-mobile">Register</a></li>
+        <li><a href="#partners" class="nav-link-mobile">Partners</a></li>
+        <li><a href="#contact" class="nav-link-mobile">Contact Us</a></li>
+      </ul>
+      <!-- Social Media Links at the bottom of the mobile navigation drawer -->
+      <div
+        id="socialLinks"
+        style="display: flex; justify-content: center; gap: 10px; padding-top: 20px; position: fixed; bottom: 115px; left: 0; width: 100%; padding-bottom: 20px;"
+      >
+        <a
+          href="https://www.facebook.com"
+          target="_blank"
+          style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background-color: #3b5998; color: white; text-decoration: none;"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+            ><path
+              d="M22.675 0h-21.35c-0.73 0-1.325 0.594-1.325 1.325v21.35c0 0.73 0.594 1.325 1.325 1.325h11.49v-9.29h-3.125v-3.627h3.125v-2.671c0-3.097 1.89-4.788 4.657-4.788 1.325 0 2.462 0.099 2.792 0.143v3.24l-1.917 0.001c-1.502 0-1.793 0.713-1.793 1.763v2.313h3.587l-0.467 3.627h-3.12v9.29h6.117c0.73 0 1.325-0.594 1.325-1.325v-21.35c0-0.73-0.595-1.325-1.325-1.325z"
+            ></path></svg
+          >
+        </a>
+        <!-- Instagram -->
+        <a
+          href="https://www.instagram.com"
+          target="_blank"
+          style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background-color: #e4405f; color: white; text-decoration: none;"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+            ><path
+              d="M12 2.163c3.204 0 3.584 0.012 4.849 0.07 1.206 0.057 1.878 0.247 2.318 0.411 0.582 0.228 1.002 0.5 1.44 0.938s0.71 0.858 0.938 1.44c0.165 0.439 0.354 1.112 0.411 2.318 0.058 1.266 0.069 1.645 0.069 4.85s-0.012 3.584-0.069 4.849c-0.057 1.206-0.247 1.878-0.411 2.318-0.228 0.582-0.5 1.002-0.938 1.44s-0.858 0.71-1.44 0.938c-0.44 0.165-1.112 0.354-2.318 0.411-1.265 0.058-1.645 0.069-4.849 0.069s-3.584-0.012-4.849-0.069c-1.206-0.057-1.878-0.247-2.318-0.411-0.582-0.228-1.002-0.5-1.44-0.938s-0.71-0.858-0.938-1.44c-0.165-0.44-0.354-1.112-0.411-2.318-0.058-1.265-0.069-1.645-0.069-4.849s0.012-3.584 0.069-4.849c0.057-1.206 0.247-1.878 0.411-2.318 0.228-0.582 0.5-1.002 0.938-1.44s0.858-0.71 1.44-0.938c0.44-0.165 1.112-0.354 2.318-0.411 1.265-0.058 1.645-0.069 4.849-0.069m0-2.163c-3.243 0-3.62 0.013-4.885 0.07-1.268 0.058-2.151 0.246-2.9 0.522-0.786 0.287-1.456 0.669-2.125 1.338s-1.051 1.339-1.338 2.125c-0.276 0.749-0.464 1.632-0.522 2.9-0.058 1.266-0.07 1.642-0.07 4.885s0.013 3.62 0.07 4.885c0.058 1.268 0.246 2.151 0.522 2.9 0.287 0.786 0.669 1.456 1.338 2.125s1.339 1.051 2.125 1.338c0.749 0.276 1.632 0.464 2.9 0.522 1.265 0.058 1.642 0.07 4.885 0.07s3.62-0.013 4.885-0.07c1.268-0.058 2.151-0.246 2.9-0.522 0.786-0.287 1.456-0.669 2.125-1.338s1.051-1.339 1.338-2.125c0.276-0.749 0.464-1.632 0.522-2.9 0.058-1.265 0.07-1.642 0.07-4.849s-0.013-3.62-0.07-4.885c-0.058-1.268-0.246-2.151-0.522-2.9-0.287-0.786-0.669-1.456-1.338-2.125s-1.339-1.051-2.125-1.338c-0.749-0.276-1.632-0.464-2.9-0.522-1.265-0.058-1.642-0.07-4.885-0.07zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-10.85a1.44 1.44 0 1 0 0-2.879 1.44 1.44 0 0 0 0 2.879z"
+            ></path></svg
+          >
+        </a>
+        <!-- Twitter (now called X) -->
+        <a
+          href="https://twitter.com"
+          target="_blank"
+          style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background-color: #1da1f2; color: white; text-decoration: none;"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+            ><path
+              d="M22.46 6.012c-.77.344-1.59.576-2.46.675a4.32 4.32 0 0 0 1.88-2.398 8.615 8.615 0 0 1-2.732 1.048 4.295 4.295 0 0 0-7.322 3.916A12.176 12.176 0 0 1 1.67 4.149a4.292 4.292 0 0 0 1.33 5.733 4.285 4.285 0 0 1-1.947-.537v.054a4.293 4.293 0 0 0 3.447 4.209 4.308 4.308 0 0 1-1.943.075 4.293 4.293 0 0 0 4.005 2.976A8.593 8.593 0 0 1 1 19.539a12.113 12.113 0 0 0 6.558 1.921c7.869 0 12.17-6.515 12.17-12.17 0-.185-.004-.369-.013-.552a8.7 8.7 0 0 0 2.142-2.217l.002-.007z"
+            ></path></svg
+          >
+        </a>
+        <!-- LinkedIn -->
+        <a
+          href="https://www.linkedin.com"
+          target="_blank"
+          style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%;padding-bottom:6px; padding-left:4px; background-color: #0077b5; color: white; text-decoration: none;"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+            ><path
+              d="M4.98 3.5c0 .99-.8 1.8-1.8 1.8-1 .01-1.8-.8-1.8-1.8 0-.99.8-1.8 1.8-1.8.99 0 1.8.8 1.8 1.8zm.13 3.5h-3.72v17h3.72v-17zm5.27 0h-3.61v17h3.61v-7.95c0-4.2 5.54-4.5 5.54 0v7.95h3.61v-10.6c0-7.3-8.96-7-9.54-3.47v-2.93zm0 0v0z"
+            ></path></svg
+          >
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main
+    style="margin-top: 70px; margin: 0px auto; max-width: 1200px; padding: 20px;"
+  >
+    <!-- Image and text section -->
+    <section
+      id="home"
+      style="display: flex; gap: 20px; background-color: #f4f4f4; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
+    >
+      <!-- Left Image -->
+      <div style="flex: 1;">
+        <img
+          src="/indiamap.png"
+          alt="First Image"
+          style="width: 100%; height: auto; object-fit: cover; border-radius: 10px;"
+        />
+      </div>
+      <!-- Right text and image -->
+      <div style="flex: 1;">
         <!-- Top Text -->
         <div style="margin-bottom: 20px;">
-            <p style="font-size: 1.2rem;"><h1 style="text-align: center; font-size: 35px; font-weight:bold;">IIT Bombay-FOSSEE-GIS/OSHW, IITTNiF & ICFOSS presents</h1></p>
+          <p style="font-size: 1.2rem;">
+            <h1 style="text-align: center; font-size: 35px; font-weight:bold;">
+              IIT Bombay-FOSSEE-GIS/OSHW, IITTNiF & ICFOSS presents
+            </h1>
+          </p>
         </div>
         <!-- Bottom Image -->
         <div style="margin-bottom: 20px;">
-            <img src="/right-img.png" alt="Second Image" style="width: 100%; height: auto; object-fit: cover; border-radius: 10px;">
+          <img
+            src="/right-img.png"
+            alt="Second Image"
+            style="width: 100%; height: auto; object-fit: cover; border-radius: 10px;"
+          />
         </div>
         <!-- Bottom Text -->
         <div>
-		<br>
-            <p style="font-size: 1.2rem;"><div class="button-container" style="text-align: center;">
-        <button class="register-button">Register Now</button>
-    </div></p>
+          <br />
+          <p style="font-size: 1.2rem;">
+            <div class="button-container" style="text-align: center;">
+              <button class="register-button" id="register_Button"
+                >Register Now</button
+              >
+            </div>
+          </p>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-        <!-- Introduction Section -->
-        <section  style="margin-top: 20px; padding: 20px; background-color: #f4f4f4; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-            <h2  style="font-size: 2.5rem; text-align: center; color: #007bff; margin-bottom: 10px; transition: color 0.3s ease; font-weight: bold;">Introducing the Hackathon: Unlocking Innovation for a Better World</h2>
-            <p style="text-align: center; margin-bottom: 10px; font-style: italic;">Welcome to the Open Source Hardware IoT GIS Hackathon!</p>
-            <p style="line-height: 1.6; font-size: 1.1rem;">Welcome to the <strong>National Level Open Hardware-IoT Geospatial Hackathon</strong>, a stage where innovation knows no boundaries. This premier event brings together visionaries, tech enthusiasts, and problem solvers from across the nation to harness the power of open hardware, the Internet of Things (IoT), and geospatial technology. Get ready to explore uncharted possibilities, collaborate on real-world challenges, and make a significant impact on our world.</p>
-        </section>
+    <!-- Introduction Section -->
+    <section
+      id="home"
+      style="margin-top: 20px; padding: 20px; background-color: #f4f4f4; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
+    >
+      <h2
+        style="font-size: 2.5rem; text-align: center; color: #007bff; margin-bottom: 10px; transition: color 0.3s ease; font-weight: bold;"
+      >
+        Introducing the Hackathon: Unlocking Innovation for a Better World
+      </h2>
+      <p style="text-align: center; margin-bottom: 10px; font-style: italic;">
+        Welcome to the Open Source Hardware IoT GIS Hackathon!
+      </p>
+      <p style="line-height: 1.6; font-size: 1.1rem;">
+        Welcome to the <strong
+          >National Level Open Hardware-IoT Geospatial Hackathon</strong
+        >, a stage where innovation knows no boundaries. This premier event
+        brings together visionaries, tech enthusiasts, and problem solvers from
+        across the nation to harness the power of open hardware, the Internet of
+        Things (IoT), and geospatial technology. Get ready to explore uncharted
+        possibilities, collaborate on real-world challenges, and make a
+        significant impact on our world.
+      </p>
+    </section>
 
-        <!-- Significance Section -->
-        <section id="about" style="margin-bottom: 20px; margin-top: 20px; padding: 20px; background-color: #f4f4f4; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-            <h3 style="color: #007bff; font-size: 2rem; margin-bottom: 10px; transition: color 0.3s ease; font-weight: bold;">Significance:</h3>
-            <ul style="line-height: 1.6; font-size: 1.1rem; padding-left: 20px;">
-                <li><strong>Solve Real-World Problems:</strong> Tackle critical issues such as environmental sustainability, disaster management, precision agriculture, and more. Your solutions can change lives and protect our planet.</li>
-                <li><strong>Foster Innovation:</strong> Innovation thrives when knowledge is shared openly. By promoting open source hardware and IoT, we empower you to push the boundaries of creativity and discovery.</li>
-                <li><strong>Create Collaborative Communities:</strong> Through this hackathon, we build communities of like-minded individuals passionate about making a difference. Together, we can achieve more than any one of us can alone.</li>
-                <li><strong>Empower Future Leaders:</strong> Whether you're a student, a professional, or an enthusiast, this hackathon is a launchpad for your ideas. It's a chance to develop your skills, showcase your talents, and make your mark on the world.</li>
-            </ul>
-            <p style="line-height: 1.6; font-size: 1.1rem;">Join us on this extraordinary journey, where innovation knows no bounds. Together, let's turn ideas into actions and make a lasting impact on society and the environment. The Open Source Hardware IoT GIS Hackathon is your stage to shine, and the world is waiting to witness your brilliance.</p>
-        </section>
+    <!-- Significance Section -->
+    <section
+      id="about"
+      style="margin-bottom: 20px; margin-top: 20px; padding: 20px; background-color: #f4f4f4; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
+    >
+      <h3
+        style="color: #007bff; font-size: 2rem; margin-bottom: 10px; transition: color 0.3s ease; font-weight: bold;"
+      >
+        Significance:
+      </h3>
+      <ul style="line-height: 1.6; font-size: 1.1rem; padding-left: 20px;">
+        <li>
+          <strong>Solve Real-World Problems:</strong> Tackle critical issues such
+          as environmental sustainability, disaster management, precision agriculture,
+          and more. Your solutions can change lives and protect our planet.
+        </li>
+        <li>
+          <strong>Foster Innovation:</strong> Innovation thrives when knowledge is
+          shared openly. By promoting open source hardware and IoT, we empower you
+          to push the boundaries of creativity and discovery.
+        </li>
+        <li>
+          <strong>Create Collaborative Communities:</strong> Through this hackathon,
+          we build communities of like-minded individuals passionate about making
+          a difference. Together, we can achieve more than any one of us can alone.
+        </li>
+        <li>
+          <strong>Empower Future Leaders:</strong> Whether you're a student, a professional,
+          or an enthusiast, this hackathon is a launchpad for your ideas. It's a
+          chance to develop your skills, showcase your talents, and make your mark
+          on the world.
+        </li>
+      </ul>
+      <p style="line-height: 1.6; font-size: 1.1rem;">
+        Join us on this extraordinary journey, where innovation knows no bounds.
+        Together, let's turn ideas into actions and make a lasting impact on
+        society and the environment. The Open Source Hardware IoT GIS Hackathon
+        is your stage to shine, and the world is waiting to witness your
+        brilliance.
+      </p>
+    </section>
 
-        <!-- Purpose Section -->
-        <section id="resources" style="margin-bottom: 20px; padding: 20px; background-color: #f4f4f4; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-            <h3 style="color: #007bff; font-size: 2rem; margin-bottom: 10px; transition: color 0.3s ease; font-weight: bold;">Purpose:</h3>
-            <p style="line-height: 1.6; font-size: 1.1rem;">This hackathon is more than just a competition; it's a platform for innovators, creators, and visionaries to come together and pioneer solutions for a brighter future. Our purpose is to harness the power of open source hardware, the Internet of Things (IoT), and Geographic Information Systems (GIS) to address some of the world's most pressing challenges.</p>
-            <p style="line-height: 1.6; font-size: 1.1rem;">The <strong>FOSSEE project</strong>, IIT Bombay promotes the use of Free/Libre Open Source Software in academia and industry. The FOSSEE project is funded through the National Mission on Education through ICT (NMEICT), Ministry of Education, Government of India. The FOSSEE-GIS team manages the overall coordination of the <em>IIT Bombay FOSSEE GIS Internship in Geospatial Dashboard Design and Implementation</em>.</p>
-        </section>
+    <!-- Purpose Section -->
+    <section
+      id="resources"
+      style="margin-bottom: 20px; padding: 20px; background-color: #f4f4f4; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
+    >
+      <h3
+        style="color: #007bff; font-size: 2rem; margin-bottom: 10px; transition: color 0.3s ease; font-weight: bold;"
+      >
+        Purpose:
+      </h3>
+      <p style="line-height: 1.6; font-size: 1.1rem;">
+        This hackathon is more than just a competition; it's a platform for
+        innovators, creators, and visionaries to come together and pioneer
+        solutions for a brighter future. Our purpose is to harness the power of
+        open source hardware, the Internet of Things (IoT), and Geographic
+        Information Systems (GIS) to address some of the world's most pressing
+        challenges.
+      </p>
+      <p style="line-height: 1.6; font-size: 1.1rem;">
+        The <strong>FOSSEE project</strong>, IIT Bombay promotes the use of
+        Free/Libre Open Source Software in academia and industry. The FOSSEE
+        project is funded through the National Mission on Education through ICT
+        (NMEICT), Ministry of Education, Government of India. The FOSSEE-GIS
+        team manages the overall coordination of the <em
+          >IIT Bombay FOSSEE GIS Internship in Geospatial Dashboard Design and
+          Implementation</em
+        >.
+      </p>
+    </section>
 
-        <!-- Registration Section -->
-<section id="register" style="margin-bottom: 20px; padding: 20px; background-color: #f4f4f4; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-    <h3 style="color: #007bff; font-size: 2rem; margin-bottom: 10px; transition: color 0.3s ease; font-weight: bold;">Registration:</h3>
-    <p style="line-height: 1.6; font-size: 1.1rem; margin-bottom: 15px;">Please click on the following button to register yourself for the Hackathon:</p>
-    <div class="button-container" style="text-align: center;">
-        <button class="register-button">Register Now</button>
-    </div>
-</section>
+    <!-- Registration Section -->
+    <section
+      id="register"
+      style="margin-bottom: 20px; padding: 20px; background-color: #f4f4f4; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
+    >
+      <h3
+        style="color: #007bff; font-size: 2rem; margin-bottom: 10px; transition: color 0.3s ease; font-weight: bold;"
+      >
+        Registration:
+      </h3>
+      <p style="line-height: 1.6; font-size: 1.1rem; margin-bottom: 15px;">
+        Please click on the following button to register yourself for the
+        Hackathon:
+      </p>
+      <div class="button-container" style="text-align: center;">
+        <button class="register-button" id="registerButton">Register Now</button
+        >
+      </div>
+    </section>
 
-        <!-- Partners and Organizers Section -->
-<section id="partners" style="margin-bottom: 20px; padding: 20px; background-color: #f4f4f4; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-    <h3 style="color: #007bff; font-size: 2rem; margin-bottom: 10px; transition: color 0.3s ease; font-weight: bold;">Partners and Organizers:</h3>
-    <p style="line-height: 1.6; font-size: 1.1rem;"><strong>Technical Partner:</strong> The Rural Data Research and Analysis (RuDRA) Lab, IIT Bombay is India's first HPC-powered data center dedicated to rural development.</p>
+    <!-- Partners and Organizers Section -->
+    <section
+      id="partners"
+      style="margin-bottom: 20px; padding: 20px; background-color: #f4f4f4; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
+    >
+      <h3
+        style="color: #007bff; font-size: 2rem; margin-bottom: 10px; transition: color 0.3s ease; font-weight: bold;"
+      >
+        Partners and Organizers:
+      </h3>
+      <p style="line-height: 1.6; font-size: 1.1rem;">
+        <strong>Technical Partner:</strong> The Rural Data Research and Analysis
+        (RuDRA) Lab, IIT Bombay is India's first HPC-powered data center dedicated
+        to rural development.
+      </p>
 
-    <!-- Carousel container -->
-    <div class="carousel-container">
+      <!-- Carousel container -->
+      <div class="carousel-container">
         <div class="carousel-track" id="carouselTrack">
-            <!-- Add slides with image links here -->
-            <div class="carousel-slide">
-                <a href="https://partner1.com" target="_blank">
-                    <img src="/iitb-logo.png" alt="Partner 1" class="carousel-image" style="height:83px;width:225px;">
-                </a>
-            </div>
-            <div class="carousel-slide">
-                <a href="https://partner2.com" target="_blank">
-                    <img src="/fossee-logo.png" alt="Partner 2" class="carousel-image" style="height:83px;width:225px;">
-                </a>
-            </div>
-            <div class="carousel-slide">
-                <a href="https://partner3.com" target="_blank">
-                    <img src="/st-logo.png" alt="Partner 3" class="carousel-image" style="height:83px;width:225px;">
-                </a>
-            </div>
-            <div class="carousel-slide">
-                <a href="https://partner4.com" target="_blank">
-                    <img src="/icfoss-logo.png" alt="Partner 4" class="carousel-image" style="height:83px;width:225px;">
-                </a>
-            </div>
-            <div class="carousel-slide">
-                <a href="https://partner5.com" target="_blank">
-                    <img src="/rudra-logo.png" alt="Partner 5" class="carousel-image" style="height:83px;width:225px;">
-                </a>
-            </div>
-            <div class="carousel-slide">
-                <a href="https://partner6.com" target="_blank">
-                    <img src="/iit-tirupati.png" alt="Partner 6" class="carousel-image" style="height:83px;width:225px;">
-                </a>
-            </div>
-            <div class="carousel-slide">
-                <a href="https://partner7.com" target="_blank">
-                    <img src="/navavishkaar.png" alt="Partner 7" class="carousel-image" style="height:83px;width:225px;">
-                </a>
-            </div>
-            <div class="carousel-slide">
-                <a href="https://partner8.com" target="_blank">
-                    <img src="/NM-ICPS-logo1.png" alt="Partner 8" class="carousel-image" style="height:83px;width:225px;">
-                </a>
-            </div>
+          <!-- Add slides with image links here -->
+          <div class="carousel-slide">
+            <a href="http://iitb.ac.in/" target="_blank">
+              <img
+                src="/iitb-logo.png"
+                alt="Partner 1"
+                class="carousel-image"
+                style="height:83px;width:225px;"
+              />
+            </a>
+          </div>
+          <div class="carousel-slide">
+            <a href="https://fossee.in/" target="_blank">
+              <img
+                src="/fossee-logo.png"
+                alt="Partner 2"
+                class="carousel-image"
+                style="height:83px;width:225px;"
+              />
+            </a>
+          </div>
+          <div class="carousel-slide">
+            <a href="https://spoken-tutorial.org/" target="_blank">
+              <img
+                src="/st-logo.png"
+                alt="Partner 3"
+                class="carousel-image"
+                style="height:83px;width:225px;"
+              />
+            </a>
+          </div>
+          <div class="carousel-slide">
+            <a href="https://icfoss.in/" target="_blank">
+              <img
+                src="/icfoss-logo.png"
+                alt="Partner 4"
+                class="carousel-image"
+                style="height:83px;width:225px;"
+              />
+            </a>
+          </div>
+          <div class="carousel-slide">
+            <a href="http://www.rudra.iitb.ac.in/" target="_blank">
+              <img
+                src="/rudra-logo.png"
+                alt="Partner 5"
+                class="carousel-image"
+                style="height:83px;width:225px;"
+              />
+            </a>
+          </div>
+          <div class="carousel-slide">
+            <a href="https://www.iittp.ac.in/" target="_blank">
+              <img
+                src="/iit-tirupati.png"
+                alt="Partner 6"
+                class="carousel-image"
+                style="height:83px;width:225px;"
+              />
+            </a>
+          </div>
+          <div class="carousel-slide">
+            <a href="https://iittnif.com/" target="_blank">
+              <img
+                src="/navavishkaar.png"
+                alt="Partner 7"
+                class="carousel-image"
+                style="height:83px;width:225px;"
+              />
+            </a>
+          </div>
+          <div class="carousel-slide">
+            <a href="https://nmicps.in/" target="_blank">
+              <img
+                src="/NM-ICPS-logo1.png"
+                alt="Partner 8"
+                class="carousel-image"
+                style="height:83px;width:225px;"
+              />
+            </a>
+          </div>
         </div>
+      </div>
+
+      <p style="line-height: 1.6; font-size: 1.1rem;">
+        <strong>Organizing Partner:</strong> The IIT Tirupati Navavishkar I-Hub Foundation
+        is the Technology Innovation Hub specializing in Positioning and Precision
+        Technologies, funded through the National Mission on Interdisciplinary Cyber-Physical
+        System (NM-ICPS), Department of Science and Technology, Government of India.
+      </p>
+    </section>
+
+    <!-- Core Team and Contact Us Section -->
+    <section
+      id="contact"
+      style="margin-bottom: 20px; padding: 20px; background-color: #f4f4f4; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
+    >
+      <h3
+        style="color: #007bff; font-size: 2rem; margin-bottom: 10px; transition: color 0.3s ease; font-weight: bold; text-align: center;"
+      >
+        Core Team & Contact Us
+        <!-- Call icon -->
+        <i style="margin-left: 10px;" class="fas fa-phone"></i>
+      </h3>
+
+      <ul
+        style="line-height: 1.6; font-size: 1.1rem; display: grid; grid-template-columns: repeat(1, 1fr); gap: 20px; list-style: none; padding: 0;"
+      >
+        <li style="border: 3px solid #ccc; padding: 15px; border-radius: 10px;">
+          <strong>Prof. Kannan Moudgalya</strong><br />P.I., FOSSEE<br />Indian
+          Institute of Technology Bombay
+        </li>
+        <li style="border: 3px solid #ccc; padding: 15px; border-radius: 10px;">
+          <strong>Prof. Pennan Chinnasamy</strong><br />Co.P.I., FOSSEE & PiC,
+          The Rural Data Research & Analysis (RuDRA) Lab, IIT Bombay<br />Indian
+          Institute of Technology Bombay
+        </li>
+        <li style="border: 3px solid #ccc; padding: 15px; border-radius: 10px;">
+          <strong>Prof. Roshan Srivastav</strong><br />Project Director, IIT
+          Tirupati Navavishkar I-Hub Foundation (NM-ICPS, DST)<br />Indian
+          Institute of Technology Tirupati
+        </li>
+        <li style="border: 3px solid #ccc; padding: 15px; border-radius: 10px;">
+          <strong>Mr. Rajesh Kushalkar</strong><br />Senior Manager, FOSSEE-Open
+          Hardware<br />Indian Institute of Technology Bombay
+        </li>
+        <li style="border: 3px solid #ccc; padding: 15px; border-radius: 10px;">
+          <strong>Mr. Mohamed Kasim Khan</strong><br /><em
+            >National Coordinator, FOSSEE-GIS</em
+          ><br />National Mission on Education through ICT, Ministry of
+          Education, Government of India<br />Indian Institute of Technology
+          Bombay
+        </li>
+      </ul>
+
+      <p style="line-height: 1.6; font-size: 1.1rem; text-align: center;">
+        Please write to us in case of any queries regarding the Hackathon at:
+      </p>
+      <p style="line-height: 1.6; font-size: 1.1rem; text-align: center;">
+        <i class="fas fa-envelope"></i>
+        <strong>Email:</strong>
+        <a
+          href="mailto:contact-oshw@fossee.in"
+          target="_blank"
+          style="text-decoration: none;"><em>contact-oshw@fossee.in</em></a
+        >
+      </p>
+    </section>
+
+    <!-- Contact Information Box -->
+    <div
+      style="background-color: #f4f4f4; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
+    >
+      <h3
+        style="color: #007bff; font-size: 2rem; margin-bottom: 10px; transition: color 0.3s ease; font-weight: bold;"
+      >
+        Contact Information:
+      </h3>
+      <ul style="line-height: 1.6; font-size: 1.1rem;">
+        <li><strong>Email:</strong> <em>contact-oshw@fossee.in</em></li>
+        <li><strong>Phone:</strong> <em>+91-1234567890</em></li>
+        <li><strong>Address:</strong> <em>IIT Bombay, Mumbai, India</em></li>
+      </ul>
     </div>
-
-    <p style="line-height: 1.6; font-size: 1.1rem;"><strong>Organizing Partner:</strong> The IIT Tirupati Navavishkar I-Hub Foundation is the Technology Innovation Hub specializing in Positioning and Precision Technologies, funded through the National Mission on Interdisciplinary Cyber-Physical System (NM-ICPS), Department of Science and Technology, Government of India.</p>
-</section>
-
-
-
-        <!-- Core Team and Contact Us Section -->
-        <section id="contact" style="margin-bottom: 20px; padding: 20px; background-color: #f4f4f4; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-            <h3 style="color: #007bff; font-size: 2rem; margin-bottom: 10px; transition: color 0.3s ease; font-weight: bold; text-align: center;">
-    Core Team & Contact Us 
-    <!-- Call icon -->
-    <i style="margin-left: 10px;" class="fas fa-phone"></i>
-</h3>
-
-            <ul style="line-height: 1.6; font-size: 1.1rem; display: grid; grid-template-columns: repeat(1, 1fr); gap: 20px; list-style: none; padding: 0;">
-                <li style="border: 3px solid #ccc; padding: 15px; border-radius: 10px;">
-                    <strong>Prof. Kannan Moudgalya</strong><br>P.I., FOSSEE<br>Indian Institute of Technology Bombay
-                </li>
-                <li style="border: 3px solid #ccc; padding: 15px; border-radius: 10px;">
-                    <strong>Prof. Pennan Chinnasamy</strong><br>Co.P.I., FOSSEE & PiC, The Rural Data Research & Analysis (RuDRA) Lab, IIT Bombay<br>Indian Institute of Technology Bombay
-                </li>
-                <li style="border: 3px solid #ccc; padding: 15px; border-radius: 10px;">
-                    <strong>Prof. Roshan Srivastav</strong><br>Project Director, IIT Tirupati Navavishkar I-Hub Foundation (NM-ICPS, DST)<br>Indian Institute of Technology Tirupati
-                </li>
-                <li style="border: 3px solid #ccc; padding: 15px; border-radius: 10px;">
-                    <strong>Mr. Rajesh Kushalkar</strong><br>Senior Manager, FOSSEE-Open Hardware<br>Indian Institute of Technology Bombay
-                </li>
-                <li style="border: 3px solid #ccc; padding: 15px; border-radius: 10px;">
-                    <strong>Mr. Mohamed Kasim Khan</strong><br><em>National Coordinator, FOSSEE-GIS</em><br>National Mission on Education through ICT, Ministry of Education, Government of India<br>Indian Institute of Technology Bombay
-                </li>
-            </ul>
-
-            <p style="line-height: 1.6; font-size: 1.1rem; text-align: center;">Please write to us in case of any queries regarding the Hackathon at:</p>
-            <p style="line-height: 1.6; font-size: 1.1rem; text-align: center;"><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:contact-oshw@fossee.in" target="_blank" style="text-decoration: none;"><em>contact-oshw@fossee.in</em></a></p>
-        </section>
-
-        <!-- Contact Information Box -->
-        <div style="background-color: #f4f4f4; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-            <h3 style="color: #007bff; font-size: 2rem; margin-bottom: 10px; transition: color 0.3s ease; font-weight: bold;">Contact Information:</h3>
-            <ul style="line-height: 1.6; font-size: 1.1rem;">
-                <li><strong>Email:</strong> <em>contact-oshw@fossee.in</em></li>
-                <li><strong>Phone:</strong> <em>+91-1234567890</em></li>
-                <li><strong>Address:</strong> <em>IIT Bombay, Mumbai, India</em></li>
-            </ul>
-        </div>
-
-		
-    </main>
-<!-- Footer Section -->
-<section id="footer">
+  </main>
+  <!-- Footer Section -->
+  <section id="footer">
     <div class="footer-container">
-        <div class="footer-column">
-            <ul>
-                <li style="font-weight: bold">About</li>
-                <a href="https://www.iitb.ac.in/" target="_blank" style="text-decoration:none;"><li>IIT Bombay</li></a>
-                <a href="https://fossee.in/" target="_blank" style="text-decoration:none;"><li>FOSSEE</li></a>
-                <a href="https://www.iittnif.org/" target="_blank" style="text-decoration:none;"><li>IITTNiF</li></a>
-                <a href="https://spoken-tutorial.org/" target="_blank" style="text-decoration:none;"><li>Spoken Tutorial</li></a>
-            </ul>
+      <div class="footer-column">
+        <ul>
+          <li style="font-weight: bold">About</li>
+          <a
+            href="https://www.iitb.ac.in/"
+            target="_blank"
+            style="text-decoration:none;"><li>IIT Bombay</li></a
+          >
+          <a
+            href="https://fossee.in/"
+            target="_blank"
+            style="text-decoration:none;"><li>FOSSEE</li></a
+          >
+          <a
+            href="https://www.iittnif.org/"
+            target="_blank"
+            style="text-decoration:none;"><li>IITTNiF</li></a
+          >
+          <a
+            href="https://spoken-tutorial.org/"
+            target="_blank"
+            style="text-decoration:none;"><li>Spoken Tutorial</li></a
+          >
+        </ul>
+      </div>
+      <div class="footer-column">
+        <ul>
+          <li style="font-weight: bold">Resources</li>
+          <a
+            href="https://qgis.org/en/site/forusers/download.html"
+            target="_blank"
+            style="text-decoration:none;"><li>QGIS</li></a
+          >
+          <a
+            href="https://spoken-tutorial.org/tutorial-search/?search_foss=QGIS&search_language=English"
+            target="_blank"
+            style="text-decoration:none;"
+            ><li>Spoken Tutorials - FOSSEE - QGIS</li></a
+          >
+        </ul>
+      </div>
+      <div class="footer-column">
+        <p style="font-weight: bold">Creative Commons License</p>
+        <div style="flex: 1;">
+          <a
+            href="http://creativecommons.org/licenses/by-sa/4.0/"
+            target="_blank"
+            ><img
+              src="/88x31.png"
+              alt="First Image"
+              style="height: auto; object-fit: cover; border-radius: 10px;"
+            /></a
+          >
         </div>
-        <div class="footer-column">
-            <ul>
-                <li style="font-weight: bold">Resources</li>
-                <a href="https://qgis.org/en/site/forusers/download.html" target="_blank" style="text-decoration:none;"><li>QGIS</li></a>
-                <a href="https://spoken-tutorial.org/tutorial-search/?search_foss=QGIS&search_language=English" target="_blank" style="text-decoration:none;"><li>Spoken Tutorials - FOSSEE - QGIS</li></a>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <p style="font-weight: bold">Creative Commons License</p>
-            <div style="flex: 1;">
-        <a href="http://creativecommons.org/licenses/by-sa/4.0/" taget="_blank"><img src="/88x31.png" alt="First Image" style="height: auto; object-fit: cover; border-radius: 10px;"></a>
+      </div>
     </div>
+    <p style="text-align:center;">
+      This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
+      International License.
+    </p>
+  </section>
 
-        </div>
-        
-    </div>
-    <p style="text-align:center;">This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</p>
-</section>
+  <!-- JavaScript for Navigation -->
+  <script>
+    const hamburgerMenu = document.getElementById("hamburgerMenu");
+    const navLinks = document.getElementById("navLinks");
+    const mobileNavDrawer = document.getElementById("mobileNavDrawer");
 
-    <!-- JavaScript for Navigation -->
-    <script>
-        const hamburgerMenu = document.getElementById('hamburgerMenu');
-        const navLinks = document.getElementById('navLinks');
-        const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+    // Toggle the mobile navigation drawer
+    let mobileNavDrawerOpen = false;
 
-        // Toggle the mobile navigation drawer
-        let mobileNavDrawerOpen = false;
+    hamburgerMenu.addEventListener("click", () => {
+      if (!mobileNavDrawerOpen) {
+        // Slide in the mobile navigation drawer from left to right
+        mobileNavDrawer.style.transform = "translateX(0)";
+        mobileNavDrawerOpen = true;
+      } else {
+        // Slide out the mobile navigation drawer
+        mobileNavDrawer.style.transform = "translateX(-100%)";
+        mobileNavDrawerOpen = false;
+      }
+    });
 
-        hamburgerMenu.addEventListener('click', () => {
-            if (!mobileNavDrawerOpen) {
-                // Slide in the mobile navigation drawer from left to right
-                mobileNavDrawer.style.transform = 'translateX(0)';
-                mobileNavDrawerOpen = true;
-            } else {
-                // Slide out the mobile navigation drawer
-                mobileNavDrawer.style.transform = 'translateX(-100%)';
-                mobileNavDrawerOpen = false;
-            }
-        });
+    // Close mobileNavDrawer if the user clicks outside it
+    document.addEventListener("click", (event) => {
+      if (
+        !mobileNavDrawer.contains(event.target) &&
+        !hamburgerMenu.contains(event.target)
+      ) {
+        mobileNavDrawer.style.transform = "translateX(-100%)";
+        mobileNavDrawerOpen = false;
+      }
+    });
 
-        // Close mobileNavDrawer if the user clicks outside it
-        document.addEventListener('click', (event) => {
-            if (!mobileNavDrawer.contains(event.target) && !hamburgerMenu.contains(event.target)) {
-                mobileNavDrawer.style.transform = 'translateX(-100%)';
-                mobileNavDrawerOpen = false;
-            }
-        });
+    // Initialize the mobile navigation drawer to be offscreen
+    mobileNavDrawer.style.transform = "translateX(-100%)";
 
-        // Initialize the mobile navigation drawer to be offscreen
-        mobileNavDrawer.style.transform = 'translateX(-100%)';
-
-        // Hide the nav links for smaller screens and show the hamburger menu
-        function resizeHandler() {
-            if (window.innerWidth <= 768) {
-                navLinks.style.display = 'none';
-                hamburgerMenu.style.display = 'block';
-                mobileNavDrawer.style.transform = 'translateX(-100%)';
-                mobileNavDrawerOpen = false;
-            } else {
-                navLinks.style.display = 'flex';
-                hamburgerMenu.style.display = 'none';
-                mobileNavDrawer.style.transform = 'translateX(-100%)';
-                mobileNavDrawerOpen = false;
-            }
-        }
-
-        // Add smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scroll({
-                        top: target.offsetTop - 70, // Adjust the offset to account for the fixed navbar
-                        behavior: 'smooth'
-                    });
-                }
-                // Close mobileNavDrawer after navigation
-                mobileNavDrawer.style.transform = 'translateX(-100%)';
-                mobileNavDrawerOpen = false;
-            });
-        });
-
-        window.addEventListener('resize', resizeHandler);
-        resizeHandler(); // Initialize on load
-
-let currentSlide = 0;
-const carouselTrack = document.getElementById('carouselTrack');
-const slides = document.querySelectorAll('.carousel-slide');
-const totalSlides = slides.length;
-
-// Function to handle the carousel for desktop view
-function advanceCarouselDesktop() {
-    currentSlide++;
-    if (currentSlide >= totalSlides - 3) {
-        currentSlide = 0; // Reset to the first slide
+    // Hide the nav links for smaller screens and show the hamburger menu
+    function resizeHandler() {
+      if (window.innerWidth <= 768) {
+        navLinks.style.display = "none";
+        hamburgerMenu.style.display = "block";
+        mobileNavDrawer.style.transform = "translateX(-100%)";
+        mobileNavDrawerOpen = false;
+      } else {
+        navLinks.style.display = "flex";
+        hamburgerMenu.style.display = "none";
+        mobileNavDrawer.style.transform = "translateX(-100%)";
+        mobileNavDrawerOpen = false;
+      }
     }
-    const offset = currentSlide * -25; // Show 4 slides at a time
-    carouselTrack.style.transform = `translateX(${offset}%)`;
-}
 
-// Function to handle the carousel for mobile view
-function advanceCarouselMobile() {
-    currentSlide++;
-    if (currentSlide >= totalSlides) {
-        currentSlide = 0; // Reset to the first slide
-    }
-    const offset = currentSlide * -100; // Show 1 slide at a time
-    carouselTrack.style.transform = `translateX(${offset}%)`;
-}
-
-// Initialize the carousel based on device size
-function initializeCarousel() {
-    // Determine the timing based on screen size
-    const slideDuration = window.innerWidth <= 768 ? 5000 : 3000; // 5 seconds for mobile, 3 seconds for desktop
-
-    // Determine whether to use mobile or desktop function
-    if (window.innerWidth <= 768) {
-        setInterval(advanceCarouselMobile, slideDuration);
-    } else {
-        setInterval(advanceCarouselDesktop, slideDuration);
-    }
-}
-
-// Call initializeCarousel on load
-window.addEventListener('load', initializeCarousel);
-
-// Update carousel when the window is resized
-window.addEventListener('resize', () => {
-    // Clear previous intervals to prevent overlapping intervals
-    clearInterval();
-    // Initialize the carousel again
-    initializeCarousel();
-});
-
- 
-
-		// Add smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+    // Add smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
         e.preventDefault();
 
-        const href = this.getAttribute('href');
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+          window.scroll({
+            top: target.offsetTop - 70, // Adjust the offset to account for the fixed navbar
+            behavior: "smooth",
+          });
+        }
+        // Close mobileNavDrawer after navigation
+        mobileNavDrawer.style.transform = "translateX(-100%)";
+        mobileNavDrawerOpen = false;
+      });
+    });
 
-        if (href === '#home') {
-            // Scroll to the top of the page for the Home link
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+    window.addEventListener("resize", resizeHandler);
+    resizeHandler(); // Initialize on load
+
+    let currentSlide = 0;
+    const carouselTrack = document.getElementById("carouselTrack");
+    const slides = document.querySelectorAll(".carousel-slide");
+    const totalSlides = slides.length;
+
+    // Function to handle the carousel for desktop view
+    function advanceCarouselDesktop() {
+      currentSlide++;
+      if (currentSlide >= totalSlides - 3) {
+        currentSlide = 0; // Reset to the first slide
+      }
+      const offset = currentSlide * -25; // Show 4 slides at a time
+      carouselTrack.style.transform = `translateX(${offset}%)`;
+    }
+
+    // Function to handle the carousel for mobile view
+    function advanceCarouselMobile() {
+      currentSlide++;
+      if (currentSlide >= totalSlides) {
+        currentSlide = 0; // Reset to the first slide
+      }
+      const offset = currentSlide * -100; // Show 1 slide at a time
+      carouselTrack.style.transform = `translateX(${offset}%)`;
+    }
+
+    // Initialize the carousel based on device size
+    function initializeCarousel() {
+      // Determine the timing based on screen size
+      const slideDuration = window.innerWidth <= 768 ? 5000 : 3000; // 5 seconds for mobile, 3 seconds for desktop
+
+      // Determine whether to use mobile or desktop function
+      if (window.innerWidth <= 768) {
+        setInterval(advanceCarouselMobile, slideDuration);
+      } else {
+        setInterval(advanceCarouselDesktop, slideDuration);
+      }
+    }
+
+    // Call initializeCarousel on load
+    window.addEventListener("load", initializeCarousel);
+
+    // Update carousel when the window is resized
+    window.addEventListener("resize", () => {
+      // Clear previous intervals to prevent overlapping intervals
+      clearInterval();
+      // Initialize the carousel again
+      initializeCarousel();
+    });
+
+    const registerButton = document.getElementById("registerButton");
+
+    // Add a click event listener to the button
+    registerButton.addEventListener("click", function () {
+      // Specify the URL you want to open
+      const url = "https://forms.gle/aVopwiwmRM35FXQT8";
+
+      // Open the URL in a new tab or window
+      window.open(url, "_blank");
+    });
+
+    const register_Button = document.getElementById("register_Button");
+
+    // Add a click event listener to the button
+    register_Button.addEventListener("click", function () {
+      // Specify the URL you want to open
+      const url = "https://forms.gle/aVopwiwmRM35FXQT8";
+
+      // Open the URL in a new tab or window
+      window.open(url, "_blank");
+    });
+
+    // Add smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const href = this.getAttribute("href");
+
+        if (href === "#home") {
+          // Scroll to the top of the page for the Home link
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
         } else {
-            const target = document.querySelector(href);
-            if (target) {
-                window.scroll({
-                    top: target.offsetTop - 70, // Adjust the offset to account for the fixed navbar
-                    behavior: 'smooth'
-                });
-            }
+          const target = document.querySelector(href);
+          if (target) {
+            window.scroll({
+              top: target.offsetTop - 70, // Adjust the offset to account for the fixed navbar
+              behavior: "smooth",
+            });
+          }
         }
 
         // Close mobileNavDrawer after navigation
-        mobileNavDrawer.style.transform = 'translateX(-100%)';
+        mobileNavDrawer.style.transform = "translateX(-100%)";
         mobileNavDrawerOpen = false;
+      });
     });
-});
 
-// Select the navigation links
-const nav_Links = document.querySelectorAll('.nav-link');
+    // Select the navigation links
+    const nav_Links = document.querySelectorAll(".nav-link");
 
-// Function to handle scroll event and set the active link
-function handleScroll() {
-    // Determine the active section based on the scroll position
-    let currentSection = null;
+    // Function to handle scroll event and set the active link
+    function handleScroll() {
+      // Determine the active section based on the scroll position
+      let currentSection = null;
 
-    // Check if the user is at the top of the page
-    if (window.scrollY === 0) {
-        currentSection = 'home';
-    } else {
+      // Check if the user is at the top of the page
+      if (window.scrollY === 0) {
+        currentSection = "home";
+      } else {
         // Loop through each section
-        document.querySelectorAll('section').forEach(section => {
-            const sectionTop = section.offsetTop - 80; // Adjust for fixed navbar height
-            const sectionBottom = sectionTop + section.offsetHeight;
+        document.querySelectorAll("section").forEach((section) => {
+          const sectionTop = section.offsetTop - 80; // Adjust for fixed navbar height
+          const sectionBottom = sectionTop + section.offsetHeight;
 
-            // Check if the scroll position is within the current section
-            if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
-                currentSection = section.id;
-            }
+          // Check if the scroll position is within the current section
+          if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+            currentSection = section.id;
+          }
         });
-    }
+      }
 
-    // Highlight the active link in the navigation menu
-    nav_Links.forEach(link => {
+      // Highlight the active link in the navigation menu
+      nav_Links.forEach((link) => {
         // Remove the active class from all links
-        link.classList.remove('active');
+        link.classList.remove("active");
 
         // Add the active class to the link that matches the current section
-        if (link.getAttribute('href') === `#${currentSection}`) {
-            link.classList.add('active');
+        if (link.getAttribute("href") === `#${currentSection}`) {
+          link.classList.add("active");
         }
-    });
-}
+      });
+    }
 
-// Attach the scroll event handler
-window.addEventListener('scroll', handleScroll);
+    // Attach the scroll event handler
+    window.addEventListener("scroll", handleScroll);
 
-// Function to handle navigation link clicks
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+    // Function to handle navigation link clicks
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
         e.preventDefault();
 
-        const href = this.getAttribute('href');
+        const href = this.getAttribute("href");
 
-        if (href === '#home') {
-            // Scroll to the top of the page for the Home link
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+        if (href === "#home") {
+          // Scroll to the top of the page for the Home link
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
 
-            // Make the "Home" link active
-            nav_Links.forEach(link => {
-                link.classList.remove('active'); // Remove active class from all links
-                if (link.getAttribute('href') === '#home') {
-                    link.classList.add('active'); // Add active class to the "Home" link
-                }
-            });
-        } else {
-            const target = document.querySelector(href);
-            if (target) {
-                window.scroll({
-                    top: target.offsetTop - 80, // Adjust for fixed navbar height
-                    behavior: 'smooth'
-                });
+          // Make the "Home" link active
+          nav_Links.forEach((link) => {
+            link.classList.remove("active"); // Remove active class from all links
+            if (link.getAttribute("href") === "#home") {
+              link.classList.add("active"); // Add active class to the "Home" link
             }
+          });
+        } else {
+          const target = document.querySelector(href);
+          if (target) {
+            window.scroll({
+              top: target.offsetTop - 80, // Adjust for fixed navbar height
+              behavior: "smooth",
+            });
+          }
         }
 
         // Close mobileNavDrawer after navigation
-        mobileNavDrawer.style.transform = 'translateX(-100%)';
+        mobileNavDrawer.style.transform = "translateX(-100%)";
         mobileNavDrawerOpen = false;
+      });
     });
-});
 
-// Run handleScroll on initial load to set the initial active link
-handleScroll();
+    // Run handleScroll on initial load to set the initial active link
+    handleScroll();
 
+    let currentSlideNewCarousel = 0;
+    const newCarouselTrack = document.getElementById("new-carousel-track");
+    const newSlides = document.querySelectorAll(".new-carousel-slide");
+    const totalNewSlides = newSlides.length;
 
-    </script>
+    // Function to advance the new carousel
+    function advanceNewCarousel() {
+      currentSlideNewCarousel++;
+      if (currentSlideNewCarousel >= totalNewSlides) {
+        currentSlideNewCarousel = 0;
+      }
+      const offset = currentSlideNewCarousel * -25; // Show 4 slides at a time
+      newCarouselTrack.style.transform = `translateX(${offset}%)`;
+    }
 
-    <!-- Styles for improved navigation menu and hover effects -->
-    
+    // Initialize the new carousel
+    setInterval(advanceNewCarousel, 3000); // Adjust the slide duration as needed
+
+    // JavaScript: Carousel functionality
+    let currentSponsorSlide = 0;
+    const sponsorCarouselTrack = document.getElementById(
+      "sponsorCarouselTrack"
+    );
+    const sponsorSlides = document.querySelectorAll(".sponsor-carousel-slide");
+    const sponsorTotalSlides = sponsorSlides.length;
+
+    // Function to handle the carousel for desktop view
+    function sponsorAdvanceCarouselDesktop() {
+      currentSponsorSlide++;
+      if (currentSponsorSlide >= sponsorTotalSlides - 3) {
+        currentSponsorSlide = 0; // Reset to the first slide
+      }
+      const sponsorOffset = currentSponsorSlide * -25; // Show 4 slides at a time
+      sponsorCarouselTrack.style.transform = `translateX(${sponsorOffset}%)`;
+    }
+
+    // Function to handle the carousel for mobile view
+    // Function to handle the carousel for mobile view
+    function sponsorAdvanceCarouselMobile() {
+      // Increment current slide index
+      currentSponsorSlide++;
+
+      // Check if current slide has reached the total slides
+      if (currentSponsorSlide >= sponsorTotalSlides) {
+        currentSponsorSlide = 0; // Reset to the first slide if we reach the end
+      }
+
+      // Calculate the offset for the carousel track to show one image at a time
+      const sponsorOffset = currentSponsorSlide * -100; // Move the track one slide width
+
+      // Update the transform style of the carousel track to move it to the new offset
+      sponsorCarouselTrack.style.transform = `translateX(${sponsorOffset}%)`;
+    }
+
+    // Initialize the carousel based on device size
+    function initializeSponsorCarousel() {
+      // Determine the timing based on screen size
+      const sponsorSlideDuration = window.innerWidth <= 768 ? 5000 : 3000; // 5 seconds for mobile, 3 seconds for desktop
+
+      // Determine whether to use mobile or desktop function
+      if (window.innerWidth <= 768) {
+        setInterval(sponsorAdvanceCarouselMobile, sponsorSlideDuration);
+      } else {
+        setInterval(sponsorAdvanceCarouselDesktop, sponsorSlideDuration);
+      }
+    }
+
+    // Call initializeSponsorCarousel on load
+    window.addEventListener("load", initializeSponsorCarousel);
+  </script>
+
+  <!-- Styles for improved navigation menu and hover effects -->
 </Layout>
