@@ -6,7 +6,10 @@ import Layout from '../layouts/Layout.astro';
     <!-- Fixed Navbar -->
     <nav style="background-color: rgba(255, 255, 255, 0.7); backdrop-filter: blur(8px); padding: 10px; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h1 style="margin: 0; color: #007bff; cursor: pointer" href="/">&nbsp IoT Geospatial Hackathon</h1>
+            <a href="/" style="margin: 0; color: #007bff; cursor: pointer; text-decoration: none;">
+    <h1 class="nav-title" style="margin: 0;">&nbsp IoT Geospatial Hackathon</h1>
+</a>
+
             <!-- Hamburger Menu Icon -->
             <div id="hamburgerMenu" style="display: none; cursor: pointer; padding-right:20px;">
                 <div style="width: 30px; height: 3px; background-color: #007bff; margin: 5px;"></div>
@@ -36,7 +39,7 @@ import Layout from '../layouts/Layout.astro';
                 <li><a href="#contact" class="nav-link-mobile">Contact Us</a></li>
             </ul>
             <!-- Social Media Links at the bottom of the mobile navigation drawer -->
-            <div id="socialLinks" style="display: flex; justify-content: center; gap: 10px; padding-top: 20px; position: fixed; bottom: 35px; left: 0; width: 100%; padding-bottom: 20px;">
+            <div id="socialLinks" style="display: flex; justify-content: center; gap: 10px; padding-top: 20px; position: fixed; bottom: 115px; left: 0; width: 100%; padding-bottom: 20px;">
                 <a href="https://www.facebook.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background-color: #3b5998; color: white; text-decoration: none;">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-0.73 0-1.325 0.594-1.325 1.325v21.35c0 0.73 0.594 1.325 1.325 1.325h11.49v-9.29h-3.125v-3.627h3.125v-2.671c0-3.097 1.89-4.788 4.657-4.788 1.325 0 2.462 0.099 2.792 0.143v3.24l-1.917 0.001c-1.502 0-1.793 0.713-1.793 1.763v2.313h3.587l-0.467 3.627h-3.12v9.29h6.117c0.73 0 1.325-0.594 1.325-1.325v-21.35c0-0.73-0.595-1.325-1.325-1.325z"/></svg>
                 </a>
@@ -57,9 +60,10 @@ import Layout from '../layouts/Layout.astro';
     </nav>
 
     <!-- Main content -->
-    <main style="margin-top: 70px; margin: 50px auto; max-width: 1200px; padding: 20px;">
+    <main  style="margin-top: 70px; margin: 50px auto; max-width: 1200px; padding: 20px;"  >
+    
         <!-- Image and text section -->
-<section style="display: flex; gap: 20px; background-color: #f4f4f4; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+<section  style="display: flex; gap: 20px; background-color: #f4f4f4; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
     <!-- Left Image -->
     <div style="flex: 1;">
         <img src="/indiamap.png" alt="First Image" style="width: 100%; height: auto; object-fit: cover; border-radius: 10px;">
@@ -85,8 +89,8 @@ import Layout from '../layouts/Layout.astro';
 </section>
 
         <!-- Introduction Section -->
-        <section id="home" style="margin-top: 20px; padding: 20px; background-color: #f4f4f4; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-            <h2 style="font-size: 2.5rem; text-align: center; color: #007bff; margin-bottom: 10px; transition: color 0.3s ease; font-weight: bold;">Introducing the Hackathon: Unlocking Innovation for a Better World</h2>
+        <section  style="margin-top: 20px; padding: 20px; background-color: #f4f4f4; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+            <h2  style="font-size: 2.5rem; text-align: center; color: #007bff; margin-bottom: 10px; transition: color 0.3s ease; font-weight: bold;">Introducing the Hackathon: Unlocking Innovation for a Better World</h2>
             <p style="text-align: center; margin-bottom: 10px; font-style: italic;">Welcome to the Open Source Hardware IoT GIS Hackathon!</p>
             <p style="line-height: 1.6; font-size: 1.1rem;">Welcome to the <strong>National Level Open Hardware-IoT Geospatial Hackathon</strong>, a stage where innovation knows no boundaries. This premier event brings together visionaries, tech enthusiasts, and problem solvers from across the nation to harness the power of open hardware, the Internet of Things (IoT), and geospatial technology. Get ready to explore uncharted possibilities, collaborate on real-world challenges, and make a significant impact on our world.</p>
         </section>
@@ -120,15 +124,70 @@ import Layout from '../layouts/Layout.astro';
 </section>
 
         <!-- Partners and Organizers Section -->
-        <section id="partners" style="margin-bottom: 20px; padding: 20px; background-color: #f4f4f4; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-            <h3 style="color: #007bff; font-size: 2rem; margin-bottom: 10px; transition: color 0.3s ease; font-weight: bold;">Partners and Organizers:</h3>
-            <p style="line-height: 1.6; font-size: 1.1rem;"><strong>Technical Partner:</strong> The Rural Data Research and Analysis (RuDRA) Lab, IIT Bombay is India's first HPC-powered data center dedicated to rural development.</p>
-            <p style="line-height: 1.6; font-size: 1.1rem;"><strong>Organizing Partner:</strong> The IIT Tirupati Navavishkar I-Hub Foundation is the Technology Innovation Hub specializing in Positioning and Precision Technologies, funded through the National Mission on Interdisciplinary Cyber-Physical System (NM-ICPS), Department of Science and Technology, Government of India.</p>
-        </section>
+<section id="partners" style="margin-bottom: 20px; padding: 20px; background-color: #f4f4f4; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+    <h3 style="color: #007bff; font-size: 2rem; margin-bottom: 10px; transition: color 0.3s ease; font-weight: bold;">Partners and Organizers:</h3>
+    <p style="line-height: 1.6; font-size: 1.1rem;"><strong>Technical Partner:</strong> The Rural Data Research and Analysis (RuDRA) Lab, IIT Bombay is India's first HPC-powered data center dedicated to rural development.</p>
+
+    <!-- Carousel container -->
+    <div class="carousel-container">
+        <div class="carousel-track" id="carouselTrack">
+            <!-- Add slides with image links here -->
+            <div class="carousel-slide">
+                <a href="https://partner1.com" target="_blank">
+                    <img src="/iitb-logo.png" alt="Partner 1" class="carousel-image" style="height:83px;width:225px;">
+                </a>
+            </div>
+            <div class="carousel-slide">
+                <a href="https://partner2.com" target="_blank">
+                    <img src="/fossee-logo.png" alt="Partner 2" class="carousel-image" style="height:83px;width:225px;">
+                </a>
+            </div>
+            <div class="carousel-slide">
+                <a href="https://partner3.com" target="_blank">
+                    <img src="/st-logo.png" alt="Partner 3" class="carousel-image" style="height:83px;width:225px;">
+                </a>
+            </div>
+            <div class="carousel-slide">
+                <a href="https://partner4.com" target="_blank">
+                    <img src="/icfoss-logo.png" alt="Partner 4" class="carousel-image" style="height:83px;width:225px;">
+                </a>
+            </div>
+            <div class="carousel-slide">
+                <a href="https://partner5.com" target="_blank">
+                    <img src="/rudra-logo.png" alt="Partner 5" class="carousel-image" style="height:83px;width:225px;">
+                </a>
+            </div>
+            <div class="carousel-slide">
+                <a href="https://partner6.com" target="_blank">
+                    <img src="/iit-tirupati.png" alt="Partner 6" class="carousel-image" style="height:83px;width:225px;">
+                </a>
+            </div>
+            <div class="carousel-slide">
+                <a href="https://partner7.com" target="_blank">
+                    <img src="/navavishkaar.png" alt="Partner 7" class="carousel-image" style="height:83px;width:225px;">
+                </a>
+            </div>
+            <div class="carousel-slide">
+                <a href="https://partner8.com" target="_blank">
+                    <img src="/NM-ICPS-logo1.png" alt="Partner 8" class="carousel-image" style="height:83px;width:225px;">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <p style="line-height: 1.6; font-size: 1.1rem;"><strong>Organizing Partner:</strong> The IIT Tirupati Navavishkar I-Hub Foundation is the Technology Innovation Hub specializing in Positioning and Precision Technologies, funded through the National Mission on Interdisciplinary Cyber-Physical System (NM-ICPS), Department of Science and Technology, Government of India.</p>
+</section>
+
+
 
         <!-- Core Team and Contact Us Section -->
         <section id="contact" style="margin-bottom: 20px; padding: 20px; background-color: #f4f4f4; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-            <h3 style="color: #007bff; font-size: 2rem; margin-bottom: 10px; transition: color 0.3s ease; font-weight: bold;">Core Team & Contact Us:</h3>
+            <h3 style="color: #007bff; font-size: 2rem; margin-bottom: 10px; transition: color 0.3s ease; font-weight: bold; text-align: center;">
+    Core Team & Contact Us 
+    <!-- Call icon -->
+    <i style="margin-left: 10px;" class="fas fa-phone"></i>
+</h3>
+
             <ul style="line-height: 1.6; font-size: 1.1rem; display: grid; grid-template-columns: repeat(1, 1fr); gap: 20px; list-style: none; padding: 0;">
                 <li style="border: 3px solid #ccc; padding: 15px; border-radius: 10px;">
                     <strong>Prof. Kannan Moudgalya</strong><br>P.I., FOSSEE<br>Indian Institute of Technology Bombay
@@ -147,8 +206,8 @@ import Layout from '../layouts/Layout.astro';
                 </li>
             </ul>
 
-            <p style="line-height: 1.6; font-size: 1.1rem;">Please write to us in case of any queries regarding the Hackathon at:</p>
-            <p style="line-height: 1.6; font-size: 1.1rem;"><strong>Email:</strong> <em>contact-oshw@fossee.in</em></p>
+            <p style="line-height: 1.6; font-size: 1.1rem; text-align: center;">Please write to us in case of any queries regarding the Hackathon at:</p>
+            <p style="line-height: 1.6; font-size: 1.1rem; text-align: center;"><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:contact-oshw@fossee.in" target="_blank" style="text-decoration: none;"><em>contact-oshw@fossee.in</em></a></p>
         </section>
 
         <!-- Contact Information Box -->
@@ -168,25 +227,30 @@ import Layout from '../layouts/Layout.astro';
     <div class="footer-container">
         <div class="footer-column">
             <ul>
-                <li>About</li>
-                <li>IIT Bombay</li>
-                <li>FOSSEE</li>
-                <li>IITTNiF</li>
-                <li>Spoken Tutorial</li>
+                <li style="font-weight: bold">About</li>
+                <a href="https://www.iitb.ac.in/" target="_blank" style="text-decoration:none;"><li>IIT Bombay</li></a>
+                <a href="https://fossee.in/" target="_blank" style="text-decoration:none;"><li>FOSSEE</li></a>
+                <a href="https://www.iittnif.org/" target="_blank" style="text-decoration:none;"><li>IITTNiF</li></a>
+                <a href="https://spoken-tutorial.org/" target="_blank" style="text-decoration:none;"><li>Spoken Tutorial</li></a>
             </ul>
         </div>
         <div class="footer-column">
             <ul>
-                <li>Resources</li>
-                <li>QGIS</li>
-                <li>Spoken Tutorials - FOSSEE - QGIS</li>
+                <li style="font-weight: bold">Resources</li>
+                <a href="https://qgis.org/en/site/forusers/download.html" target="_blank" style="text-decoration:none;"><li>QGIS</li></a>
+                <a href="https://spoken-tutorial.org/tutorial-search/?search_foss=QGIS&search_language=English" target="_blank" style="text-decoration:none;"><li>Spoken Tutorials - FOSSEE - QGIS</li></a>
             </ul>
         </div>
         <div class="footer-column">
-            <p>Creative Commons License</p>
-            <p>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</p>
-        </div>
+            <p style="font-weight: bold">Creative Commons License</p>
+            <div style="flex: 1;">
+        <a href="http://creativecommons.org/licenses/by-sa/4.0/" taget="_blank"><img src="/88x31.png" alt="First Image" style="height: auto; object-fit: cover; border-radius: 10px;"></a>
     </div>
+
+        </div>
+        
+    </div>
+    <p style="text-align:center;">This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</p>
 </section>
 
     <!-- JavaScript for Navigation -->
@@ -257,6 +321,56 @@ import Layout from '../layouts/Layout.astro';
         window.addEventListener('resize', resizeHandler);
         resizeHandler(); // Initialize on load
 
+let currentSlide = 0;
+const carouselTrack = document.getElementById('carouselTrack');
+const slides = document.querySelectorAll('.carousel-slide');
+const totalSlides = slides.length;
+
+// Function to handle the carousel for desktop view
+function advanceCarouselDesktop() {
+    currentSlide++;
+    if (currentSlide >= totalSlides - 3) {
+        currentSlide = 0; // Reset to the first slide
+    }
+    const offset = currentSlide * -25; // Show 4 slides at a time
+    carouselTrack.style.transform = `translateX(${offset}%)`;
+}
+
+// Function to handle the carousel for mobile view
+function advanceCarouselMobile() {
+    currentSlide++;
+    if (currentSlide >= totalSlides) {
+        currentSlide = 0; // Reset to the first slide
+    }
+    const offset = currentSlide * -100; // Show 1 slide at a time
+    carouselTrack.style.transform = `translateX(${offset}%)`;
+}
+
+// Initialize the carousel based on device size
+function initializeCarousel() {
+    // Determine the timing based on screen size
+    const slideDuration = window.innerWidth <= 768 ? 5000 : 3000; // 5 seconds for mobile, 3 seconds for desktop
+
+    // Determine whether to use mobile or desktop function
+    if (window.innerWidth <= 768) {
+        setInterval(advanceCarouselMobile, slideDuration);
+    } else {
+        setInterval(advanceCarouselDesktop, slideDuration);
+    }
+}
+
+// Call initializeCarousel on load
+window.addEventListener('load', initializeCarousel);
+
+// Update carousel when the window is resized
+window.addEventListener('resize', () => {
+    // Clear previous intervals to prevent overlapping intervals
+    clearInterval();
+    // Initialize the carousel again
+    initializeCarousel();
+});
+
+ 
 
 		// Add smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -286,6 +400,86 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         mobileNavDrawerOpen = false;
     });
 });
+
+// Select the navigation links
+const nav_Links = document.querySelectorAll('.nav-link');
+
+// Function to handle scroll event and set the active link
+function handleScroll() {
+    // Determine the active section based on the scroll position
+    let currentSection = null;
+
+    // Check if the user is at the top of the page
+    if (window.scrollY === 0) {
+        currentSection = 'home';
+    } else {
+        // Loop through each section
+        document.querySelectorAll('section').forEach(section => {
+            const sectionTop = section.offsetTop - 80; // Adjust for fixed navbar height
+            const sectionBottom = sectionTop + section.offsetHeight;
+
+            // Check if the scroll position is within the current section
+            if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+                currentSection = section.id;
+            }
+        });
+    }
+
+    // Highlight the active link in the navigation menu
+    nav_Links.forEach(link => {
+        // Remove the active class from all links
+        link.classList.remove('active');
+
+        // Add the active class to the link that matches the current section
+        if (link.getAttribute('href') === `#${currentSection}`) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Attach the scroll event handler
+window.addEventListener('scroll', handleScroll);
+
+// Function to handle navigation link clicks
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const href = this.getAttribute('href');
+
+        if (href === '#home') {
+            // Scroll to the top of the page for the Home link
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+
+            // Make the "Home" link active
+            nav_Links.forEach(link => {
+                link.classList.remove('active'); // Remove active class from all links
+                if (link.getAttribute('href') === '#home') {
+                    link.classList.add('active'); // Add active class to the "Home" link
+                }
+            });
+        } else {
+            const target = document.querySelector(href);
+            if (target) {
+                window.scroll({
+                    top: target.offsetTop - 80, // Adjust for fixed navbar height
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Close mobileNavDrawer after navigation
+        mobileNavDrawer.style.transform = 'translateX(-100%)';
+        mobileNavDrawerOpen = false;
+    });
+});
+
+// Run handleScroll on initial load to set the initial active link
+handleScroll();
+
 
     </script>
 

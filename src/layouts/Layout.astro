@@ -18,6 +18,8 @@ const { title } = Astro.props;
     <title>{title}</title>
     <!-- Import any global stylesheets here -->
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 
 <body>
@@ -55,7 +57,24 @@ const { title } = Astro.props;
     }
 
     /* Adjust the layout to be mobile-friendly */
-    
+    @media (max-width: 768px) {
+		.nav-title{
+            
+        font-size: 1.2rem; /* Adjust font size for smaller screens */
+    }
+        
+	}
+
+    /* Styling for active navigation link */
+.nav-link.active {
+    border: none; /* Remove any default borders */
+    position: relative;
+    background-color: #007bff; /* Add a background color */
+    color: white; /* Set text color to white */
+    border-radius: 4px; /* Optional: Add a border radius */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a blue box shadow */
+}
+
 
 	@media (min-width: 768px) {
 		body{
@@ -276,6 +295,7 @@ const { title } = Astro.props;
     }
 }
 
+
     /* Add any other global styles here */
 </style>
 
@@ -437,5 +457,112 @@ const { title } = Astro.props;
 .footer-column a:hover {
     color: #d1eaff;
 }
+
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 25%; /* Shows 4 images at a time */
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+@media (max-width: 768px) {
+    .carousel-slide {
+        min-width: 50%; /* Shows 2 images at a time on smaller screens */
+    }
+}
+
+
+/* Carousel Container */
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Carousel Track */
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Carousel Slides */
+.carousel-slide {
+    min-width: 25%; /* Show 4 images at a time on larger screens */
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+/* Carousel Images */
+.carousel-image {
+    width: 100%; /* Fill the slide width */
+    height: auto;
+    object-fit: contain; /* Maintain aspect ratio */
+}
+
+@media (max-width: 768px) {
+    /* For mobile screens, show 2 images at a time */
+    .carousel-slide {
+        min-width: 80%; 
+    }
+}
+
+
+/* For devices with max-width 768px (e.g., mobile) */
+@media (max-width: 768px) {
+    .carousel-image {
+        height: 60px; /* Smaller height for mobile screens */
+        width: 160px; /* Smaller width for mobile screens */
+    }
+}
+
+/* For devices with max-width 480px (e.g., small mobile) */
+@media (max-width: 480px) {
+    .carousel-image {
+        height: 50px; /* Even smaller height for small mobile screens */
+        width: 140px; /* Even smaller width for small mobile screens */
+    }
+}
+
+/* Carousel container */
+.carousel-container {
+    width: 100%;
+    overflow: hidden; /* Hide overflow */
+}
+
+/* Carousel track */
+.carousel-track {
+    display: flex; /* Horizontal scroll for images */
+    transition: transform 0.5s ease-in-out; /* Smooth transition */
+}
+
+/* Carousel slides */
+.carousel-slide {
+    min-width: 25%; /* Show 4 images at a time on larger screens */
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+/* Carousel images */
+.carousel-image {
+    width: 100%; /* Fill the slide width */
+    height: auto;
+    object-fit: contain; /* Maintain aspect ratio */
+}
+
+@media (max-width: 768px) {
+    /* For mobile screens, show 1 image at a time */
+    .carousel-slide {
+        min-width: 100%; /* Show 1 image at a time */
+    }
+}
+
 
 </style>
