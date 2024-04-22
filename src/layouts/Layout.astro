@@ -591,7 +591,19 @@ const { title } = Astro.props;
   /* For mobile screens, show 1 image at a time */
   .sponsor-carousel-slide {
     min-width: 100%; /* Show 1 image at a time */
+    
   }
+  #socialMediaContainer {
+    display: none;
 }
+}
+
+@media (max-width: 768px) {
+    #socialMediaContainer {
+      display: none !important;
+    }
+}
+
+
 
 </style>
