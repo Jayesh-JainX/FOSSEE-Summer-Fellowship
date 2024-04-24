@@ -1093,9 +1093,26 @@ import Layout from "../layouts/Layout.astro";
     // Call initializeSponsorCarousel on load
     window.addEventListener("load", initializeSponsorCarousel);
 
+    let previousWidth = window.innerWidth;
+    let previousHeight = window.innerHeight;
+    const threshold = 40;
+
     window.addEventListener("resize", function () {
-      // Reload the page when the desktop size changes
-      window.location.reload();
+      const currentWidth = window.innerWidth;
+      const currentHeight = window.innerHeight;
+
+      // Calculate the change in width and height
+      const widthChange = Math.abs(currentWidth - previousWidth);
+      const heightChange = Math.abs(currentHeight - previousHeight);
+
+      // Check if the change in size exceeds the threshold
+      if (widthChange > threshold || heightChange > threshold) {
+        window.location.reload();
+      }
+
+      // Update the previous size
+      previousWidth = currentWidth;
+      previousHeight = currentHeight;
     });
   </script>
 </Layout>
